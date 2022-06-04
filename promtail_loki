@@ -118,6 +118,8 @@ sudo usermod -a -G adm promtail
 sudo service promtail start
 sudo service promtail status
 
+curl "127.0.0.1:9080/metrics"
+
 ####Grafana
 
 sudo apt-get install -y apt-transport-https
