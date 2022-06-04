@@ -1,7 +1,7 @@
 cd /usr/local/bin
-curl -O -L "https://github.com/grafana/loki/releases/download/v2.4.1/loki-linux-amd64.zip"
-unzip "loki-linux-amd64.zip"
-chmod a+x "loki-linux-amd64"
+sudo curl -O -L "https://github.com/grafana/loki/releases/download/v2.4.1/loki-linux-amd64.zip"
+sudo unzip "loki-linux-amd64.zip"
+sudo chmod a+x "loki-linux-amd64"
 sudo cat << EOF > ./config-loki.yml
 auth_enabled: false
 
@@ -66,16 +66,16 @@ EOF
 sudo service loki stop
 sudo service loki status
 
-curl "127.0.0.1:3100/metrics"
+sudo curl "127.0.0.1:3100/metrics"
 
 
 ####Promtail
 
-cd /usr/local/bin
-curl -O -L "https://github.com/grafana/loki/releases/download/v2.4.1/promtail-linux-amd64.zip"
-unzip "promtail-linux-amd64.zip"
+sudo cd /usr/local/bin
+sudo curl -O -L "https://github.com/grafana/loki/releases/download/v2.4.1/promtail-linux-amd64.zip"
+sudo unzip "promtail-linux-amd64.zip"
 sudo chmod a+x "promtail-linux-amd64"
-cat << EOF > config-promtail.yml
+sudo cat << EOF > config-promtail.yml
 server:
   http_listen_port: 9080
   grpc_listen_port: 0
@@ -111,6 +111,6 @@ ExecStart=/usr/local/bin/promtail-linux-amd64 -config.file /usr/local/bin/config
 [Install]
 WantedBy=multi-user.target
 EOF
-usermod -a -G adm promtail
+sudo usermod -a -G adm promtail
 sudo service promtail start
 sudo service promtail status
