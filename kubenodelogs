@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#test
 nodeName=$1
 #Check kubectl client exists
 if ! command -v kubectl &> /dev/null
