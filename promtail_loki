@@ -117,6 +117,7 @@ EOF
 sudo usermod -a -G adm promtail
 sudo service promtail start
 sudo service promtail status
+chown promtail:promtail /tmp/positions.yaml
 
 curl "127.0.0.1:9080/metrics"
 
